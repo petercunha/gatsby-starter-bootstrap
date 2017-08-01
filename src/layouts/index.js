@@ -3,7 +3,8 @@ import PropTypes from 'prop-types'
 import Link from 'gatsby-link'
 import Helmet from 'react-helmet'
 
-import './index.scss'
+import './index.scss';
+import 'prismjs/themes/prism-okaidia.css';
 
 const TemplateWrapper = ({ children }) =>
   <div>
