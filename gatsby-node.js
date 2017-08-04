@@ -8,8 +8,9 @@ const blogPostQuery = `{
       edges {
         node {
           frontmatter {
+            path
             date(formatString: "Y-MM")
-            path: date(formatString: "MMMM-Y")
+            regex: date(formatString: "Y-MM")
             title
           }
         }
@@ -59,10 +60,10 @@ function createArchivePages({ boundActionCreators, graphql }) {
         .forEach(key => articlesPerMonth[key]
           .forEach((node) => {
             createPage({
-              path: `/${node.frontmatter.path}`,
+              path: `/${node.frontmatter.date}`,
               component: listTemplate,
               context: {
-                regex: `/${node.frontmatter.date}-/`
+                regex: `/${node.frontmatter.regex}-/`
               } // additional data can be passed via context
             });
           })
